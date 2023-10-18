@@ -1,0 +1,70 @@
+
+/* DEFINE ELEMENTS HERE */
+$lato: 'Lato', sans-serif;
+$raleway: 'Raleway', sans-serif;
+$header-color: rgba(29, 26, 26, 0.8);
+$primary-blue: #2C7BB4;
+$secondary-blue: #4292cb;
+
+/* IMPORT ELEMENTS HERE */
+@import 'responsive';
+
+body{
+  background-attachment: fixed;
+  background-image: url(https://images.unsplash.com/photo-1446435210126-bfa18ee3b7a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1646&q=80);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.container{
+  // transform: translateY(40%);
+  transition: transform 0.5s;
+  margin: 8rem auto;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.fa-chevron-right{
+  font-size: smaller;
+}
+
+.text-content h1{
+  font-family: $raleway;
+  color: $header-color;
+}
+
+.text-content p {
+  font-size: 1.1rem;
+  font-family: $lato;
+}
+
+.demo-disclaim{
+  font-size: smaller !important;
+  color: rgb(35, 34, 34);
+}
+
+.continue-wrap{
+  bottom: 1rem;
+  right: 1rem;
+}
+
+.continue-btn{
+  background-color: $primary-blue;
+  color: white;
+  transition: 200ms ease-in-out;
+}
+
+.continue-btn:hover{
+  background-color: $secondary-blue;
+  color: white;
+  border: 1px solid $secondary-blue;
+}
+
+.question-hidden{
+  display: none;
+  opacity: 0;
+}
+
+.copyright{
+  color: white;
+  font-size: small;
+}
