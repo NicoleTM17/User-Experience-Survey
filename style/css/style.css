@@ -68,4 +68,13 @@ body {
 .copyright {
   color: white;
   font-size: small;
+  left: 45%;
+}
+
+.error-msg {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: smaller;
+  opacity: 0.8;
 }/*# sourceMappingURL=style.css.map */

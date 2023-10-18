@@ -16,19 +16,23 @@ function surveyQuestions(){
     button.addEventListener('click', event => {
       const currentContainer = allQuestions[index];
 
-      currentContainer.style.transform = 'translateY(-100%)'; // for current question clicked
-      currentContainer.style.margin = '0'; // for current question clicked
 
-      // answerRequired(currentContainer);
+      if(currentContainer.querySelector('.group-1')){
+        const error = answerRequired(currentContainer);
+        if (error){
+          return;
+        }
+      };
 
       if (index < allQuestions.length - 1) { // if the current index is less than the number of questions
         const nextContainer = allQuestions[index + 1];
 
         nextContainer.classList.remove('question-hidden'); // for next question
         nextContainer.style.margin = '8rem auto';
-        // allQuestions[index + 1].style.transform = 'translateY(0)'; if you wanted to include transition!
       }
 
+      currentContainer.style.transform = 'translateY(-100%)'; // for current question clicked
+      currentContainer.style.margin = '0'; // for current question clicked
 
       // Move the current question up and hide it
       currentContainer.classList.add('question-hidden');
@@ -43,17 +47,23 @@ function answerRequired(questionContainer){
   let oneSelected = false;
 
   q1Checkboxes.forEach((checkbox) => {
-    if(checkbox.checked){
+    if( checkbox.classList.contains('group-1') && checkbox.checked){
       oneSelected = true;
     }
   });
 
   if(!oneSelected){
-    alert('You must select one answer!');
-    return;
+    const errorMsg = document.createElement('p');
+    errorMsg.classList.add('error-msg')
+    errorMsg.innerText = 'You must select at least one answer!';
+    errorMsg.style.color = 'red';
+    questionContainer.appendChild(errorMsg);
+    // console.log('ERROR'); // detected for just Q1
+    return true;
   }
-
+  return false;
 }
+
 
 
 function selectOneCheckbox(){
@@ -90,7 +100,9 @@ function selectOneCheckbox(){
 //   const pntsRadio = document.querySelector('.radio-pnts');
 
 //   yesRadio.addEventListener('click', event => {
-//     if
+//     if(!yesRadio.checked){
+//       // the next container should be skipped
+//     }
 //   })
 
 // }
