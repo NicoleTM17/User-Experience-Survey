@@ -1,6 +1,6 @@
 /* DEFINE ELEMENTS HERE */
 /* IMPORT ELEMENTS HERE */
-@media (max-width: 540px) {
+@media (max-width: 767px) {
   .container {
     width: 75% !important;
     margin: 2rem auto !important;
@@ -27,6 +27,7 @@ body {
 }
 
 .container {
+  height: 100%;
   transition: transform 0.5s;
   margin: 8rem auto;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
