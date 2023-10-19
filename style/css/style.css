@@ -3,6 +3,7 @@
 @media (max-width: 540px) {
   .container {
     width: 75% !important;
+    margin: 2rem auto !important;
   }
   .display-img {
     border-top-left-radius: 5px !important;
