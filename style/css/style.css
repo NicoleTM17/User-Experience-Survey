@@ -10,6 +10,13 @@
     border-bottom-left-radius: 0 !important;
     border-bottom-right-radius: 0;
   }
+  .copyright {
+    left: 50%;
+    transform: translate(-50%);
+  }
+  .form-select {
+    width: 100% !important;
+  }
 }
 body {
   background-attachment: fixed;
@@ -73,7 +80,7 @@ body {
 
 .error-msg {
   position: absolute;
-  top: 1rem;
+  top: 0.7rem;
   right: 1rem;
   font-size: smaller;
   opacity: 0.8;

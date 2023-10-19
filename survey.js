@@ -16,13 +16,53 @@ function surveyQuestions(){
     button.addEventListener('click', event => {
       const currentContainer = allQuestions[index];
 
-
-      if(currentContainer.querySelector('.group-1')){
-        const error = answerRequired(currentContainer);
+      if (currentContainer.querySelector('.group-1')) {
+        const error = answerRequired(currentContainer, 'group-1');
+        if (error) {
+          return;
+        }
+      } else if (currentContainer.querySelector('.textarea-1')) {
+        const error = answerRequired(currentContainer, 'textarea-1');
+        if (error) {
+          return;
+        }
+      } else if (currentContainer.querySelector('.textarea-2')) {
+        const error = answerRequired(currentContainer, 'textarea-2');
         if (error){
           return;
         }
-      };
+      }else if (currentContainer.querySelector('.group-2')) {
+        const error = answerRequired(currentContainer, 'group-2');
+        if (error){
+          return;
+        }
+      } else if (currentContainer.querySelector('.select-1')){
+        const error = answerRequired(currentContainer, 'select-1');
+        if (error){
+          return;
+        }
+      } else if (currentContainer.querySelector('.group-4')){
+        const error = answerRequired(currentContainer, 'group-4');
+        if (error){
+          return;
+        }
+      } else if (currentContainer.querySelector('.select-2')){
+        const error = answerRequired(currentContainer, 'select-2');
+        if (error){
+          return;
+        }
+      } else if (currentContainer.querySelector('.group-6')){
+        const error = answerRequired(currentContainer, 'group-6');
+        if (error){
+          return;
+        }
+      } else if (currentContainer.querySelector('.select-3')){
+        const error = answerRequired(currentContainer, 'select-3');
+        if (error){
+          return;
+        }
+      }
+
 
       if (index < allQuestions.length - 1) { // if the current index is less than the number of questions
         const nextContainer = allQuestions[index + 1];
@@ -40,27 +80,161 @@ function surveyQuestions(){
   });
 }
 
-function answerRequired(questionContainer){
+function answerRequired(container, elementType){
   // all questions must have at least one response selected or typed in to continue
 
-  const q1Checkboxes = questionContainer.querySelectorAll('.group-1');
-  let oneSelected = false;
+  // Q1 FOUND US
+  if(elementType === 'group-1'){
+    const q1Checkboxes = container.querySelectorAll('.group-1');
+    let oneSelected = false;
 
-  q1Checkboxes.forEach((checkbox) => {
-    if( checkbox.classList.contains('group-1') && checkbox.checked){
-      oneSelected = true;
+    q1Checkboxes.forEach((checkbox) => {
+      if(checkbox.classList.contains('group-1') && checkbox.checked){
+        oneSelected = true;
+      }
+    });
+
+    if(!oneSelected){
+      const errorMsg = document.createElement('p');
+      errorMsg.classList.add('error-msg')
+      errorMsg.innerText = 'You must select at least one answer';
+      errorMsg.style.color = 'red';
+      container.appendChild(errorMsg);
+      // console.log('ERROR'); // detected for just Q1
+      return true;
     }
-  });
 
-  if(!oneSelected){
-    const errorMsg = document.createElement('p');
-    errorMsg.classList.add('error-msg')
-    errorMsg.innerText = 'You must select at least one answer!';
-    errorMsg.style.color = 'red';
-    questionContainer.appendChild(errorMsg);
-    // console.log('ERROR'); // detected for just Q1
-    return true;
+    // Q2 STRENGTHS
+
+  } else if (elementType === 'textarea-1'){
+    const q2Strengths = container.querySelector('.textarea-1').value;
+
+    if(q2Strengths.length < 1){
+      const errorMsg = document.createElement('p');
+      errorMsg.classList.add('error-msg')
+      errorMsg.innerText = 'Please type in your answer';
+      errorMsg.style.color = 'red';
+      container.appendChild(errorMsg);
+      return true
+    }
+
+    // Q3 WEAKNESS
+  } else if (elementType === 'textarea-2'){
+    const q3Improvements = container.querySelector('.textarea-2').value;
+
+    if(q3Improvements.length < 1){
+      const errorMsg = document.createElement('p');
+      errorMsg.classList.add('error-msg')
+      errorMsg.innerText = 'Please type in your answer';
+      errorMsg.style.color = 'red';
+      container.appendChild(errorMsg);
+      return true
+    }
+
+    // Q4 RATING
+  } else if (elementType === 'group-2'){
+    const q4Rating = container.querySelectorAll('.group-2');
+    let oneSelected = false;
+
+    q4Rating.forEach((radio) => {
+      if(radio.checked){
+        oneSelected = true;
+      }
+    });
+
+    if(!oneSelected){
+      const errorMsg = document.createElement('p');
+      errorMsg.classList.add('error-msg')
+      errorMsg.innerText = 'You must select at least one answer';
+      errorMsg.style.color = 'red';
+      container.appendChild(errorMsg);
+      return true;
+    }
+
+    // Demo-1 AGE
+  } else if (elementType === 'select-1'){
+    const demoAge = container.querySelector('.select-1');
+    const selectedIndexAge = demoAge.selectedIndex;
+
+    if(selectedIndexAge === 0){
+      const errorMsg = document.createElement('p');
+      errorMsg.classList.add('error-msg')
+      errorMsg.innerText = 'You must select at least one answer';
+      errorMsg.style.color = 'red';
+      container.appendChild(errorMsg);
+      return true;
+    }
+
+
+    // Demo-2 GENDER
+  }else if (elementType === 'group-4'){
+    const demoGender = container.querySelectorAll('.group-4');
+    let oneSelected = false;
+
+    demoGender.forEach((radio) => {
+      if(radio.checked){
+        oneSelected = true;
+      }
+    });
+
+    if(!oneSelected){
+      const errorMsg = document.createElement('p');
+      errorMsg.classList.add('error-msg')
+      errorMsg.innerText = 'You must select at least one answer';
+      errorMsg.style.color = 'red';
+      container.appendChild(errorMsg);
+      return true;
+    }
+
+    // Demo-3 REGION
+  }else if (elementType === 'select-2'){
+    const demoRegion = container.querySelector('.select-2');
+    const selectedIndexAge = demoRegion.selectedIndex;
+
+    if(selectedIndexAge === 0){
+      const errorMsg = document.createElement('p');
+      errorMsg.classList.add('error-msg')
+      errorMsg.innerText = 'You must select at least one answer';
+      errorMsg.style.color = 'red';
+      container.appendChild(errorMsg);
+      return true;
+    }
+
+    // Demo-4 CONDITION
+  }else if (elementType === 'group-6'){
+    const demoCondition = container.querySelectorAll('.group-6');
+    let oneSelected = false;
+
+    demoCondition.forEach((radio) => {
+      if(radio.checked){
+        oneSelected = true;
+      }
+    });
+
+    if(!oneSelected){
+      const errorMsg = document.createElement('p');
+      errorMsg.classList.add('error-msg')
+      errorMsg.innerText = 'You must select at least one answer';
+      errorMsg.style.color = 'red';
+      container.appendChild(errorMsg);
+      return true;
+    }
+
+    // Demo-5 RELIGION
+  }else if (elementType === 'select-3'){
+    const demoReligion = container.querySelector('.select-3');
+    const selectedIndexAge = demoReligion.selectedIndex;
+
+    if(selectedIndexAge === 0){
+      const errorMsg = document.createElement('p');
+      errorMsg.classList.add('error-msg')
+      errorMsg.innerText = 'You must select at least one answer';
+      errorMsg.style.color = 'red';
+      container.appendChild(errorMsg);
+      return true;
+    }
   }
+
   return false;
 }
 
@@ -91,24 +265,5 @@ function selectOneCheckbox(){
 }
 
 
-// function skipQuestion(){
-//   // If the user selects the 'Yes' radio box, they are shown the next question
-//   // If the user selects 'No' or 'PNTS' they skip the next question
-
-//   const yesRadio = document.querySelector('.radio-yes');
-//   const noRadio = document.querySelector('.radio-no');
-//   const pntsRadio = document.querySelector('.radio-pnts');
-
-//   yesRadio.addEventListener('click', event => {
-//     if(!yesRadio.checked){
-//       // the next container should be skipped
-//     }
-//   })
-
-// }
-
-
 surveyQuestions();
 selectOneCheckbox();
-// skipQuestion();
-// users must select something/ type something in otherwise they cannot move on

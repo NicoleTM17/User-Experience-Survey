@@ -12,5 +12,13 @@
     border-bottom-right-radius: 0;
   }
 
+  .copyright{
+    left: 50%;
+    transform: translate(-50%);
+  }
+
+  .form-select{
+    width: 100% !important;
+  }
 
 }
