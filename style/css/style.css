@@ -19,15 +19,6 @@
   .form-select {
     width: 100% !important;
   }
-  .error-msg {
-    top: -23rem !important;
-    right: -5rem !important;
-    position: relative !important;
-    font-size: smaller !important;
-    font-size: smaller;
-    opacity: 0.8;
-    color: red;
-  }
 }
 body {
   background-attachment: fixed;
