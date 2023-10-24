@@ -3,9 +3,10 @@
 @media (max-width: 767px) {
   .container {
     width: 75% !important;
-    margin: 2rem auto !important;
+    margin: 4rem auto !important;
   }
   .display-img {
+    max-height: 13rem;
     border-top-left-radius: 5px !important;
     border-top-right-radius: 5px;
     border-bottom-left-radius: 0 !important;
@@ -17,6 +18,15 @@
   }
   .form-select {
     width: 100% !important;
+  }
+  .error-msg {
+    top: -23rem !important;
+    right: -5rem !important;
+    position: relative !important;
+    font-size: smaller !important;
+    font-size: smaller;
+    opacity: 0.8;
+    color: red;
   }
 }
 body {
